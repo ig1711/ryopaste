@@ -38,7 +38,7 @@ Ctrl + h :: Show history`;
 
 const Index = () => {
   const [value, setValue] = useState(
-    "Paste your code in the paste box\nCtrl + / for shortcuts"
+    "Paste your code in the paste box below.\n\nUnfortunately, editing is not supported. The feature has been compromised on behalf of the realtime line\nnumbers and syntax highlighting feature.\n\nYou have to paste all your code at once. Right click on the paste box to paste. Or, use Ctrl + v.\n\nCtrl + / for shortcuts"
   );
   const [iValue, setIValue] = useState("Paste");
   const [name, setName] = useState("Untitled");
@@ -107,6 +107,12 @@ const Index = () => {
     return () => document.removeEventListener("keydown", keyHandler);
   }, [shortcut]);
 
+  useEffect(() => {
+    const handler = () => console.log(pasteRef.current);
+    document.addEventListener("contextmenu", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, []);
+
   return (
     <>
       <Head>
@@ -133,7 +139,7 @@ const Index = () => {
       <div className="fixed bottom-0 left-0 h-12 w-full border-[1px] border-transparent border-t-[#999] bg-stone-800 shadow-xl shadow-black p-2 grid grid-cols-5 place-content-center place-items-stretch z-10">
         <button
           ref={historyBtn}
-          className="h-10 text-[#999] hover:text-white focus:text-white hover:shadow-[0_1px_0_white] focus:shadow-[0_1px_0_white] outline-none transition-all py-2"
+          className="h-10 text-[#999] hover:text-white hover:shadow-[0_1px_0_white] outline-none transition-all py-2"
           onClick={() => {
             const h = window?.localStorage?.getItem("history");
             if (!h)
@@ -143,13 +149,13 @@ const Index = () => {
             setView((v) => (v === "history" ? "code" : "history"));
           }}
         >
-          History
+          {view === 'history' ? 'Go Back' : 'History'}
         </button>
         <Listbox value={selected} onChange={setSelected}>
           <div className="relative">
             <Listbox.Button
               ref={langButton}
-              className="h-10 w-full bg-transparent cursor-default text-[#999] hover:text-white text-center outline-none focus:text-white hover:shadow-[0_1px_0_white] focus:shadow-[0_1px_0_white] transition-all py-2"
+              className="h-10 w-full bg-transparent cursor-default text-[#999] hover:text-white text-center outline-none hover:shadow-[0_1px_0_white] transition-all py-2"
             >
               <span className="truncate">{selected.name}</span>
             </Listbox.Button>
@@ -160,12 +166,12 @@ const Index = () => {
               leaveTo="opacity-0"
             >
               <Listbox.Options
-                style={{ "scrollbar-width": "none" }}
-                className="bottom-12 absolute w-full py-1 mt-1 overflow-auto text-base bg-stone-800 rounded-sm shadow-xl shadow-black max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+                style={{ scrollbarWidth: "none" }}
+                className="bottom-12 absolute w-60 py-1 mt-1 overflow-auto text-base bg-stone-800 rounded-sm shadow-xl shadow-black max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
               >
-                {languages.map((lang) => (
+                {languages.map((lang, i) => (
                   <Listbox.Option
-                    key={lang.codes[0]}
+                    key={i}
                     className={({ active }) =>
                       `${active ? "text-amber-300 bg-stone-500" : "text-[#999]"}
                           cursor-default select-none relative py-2 pl-10 pr-4`
@@ -224,7 +230,7 @@ const Index = () => {
         />
         <button
           ref={saveBtn}
-          className="h-10 text-[#999] hover:text-white focus:text-white hover:shadow-[0_1px_0_white] focus:shadow-[0_1px_0_white] outline-none transition-all py-2"
+          className="h-10 text-[#999] hover:text-white hover:shadow-[0_1px_0_white] outline-none transition-all py-2"
           onClick={async () => {
             const buid = snowflake.generate();
             const uid = buid.toString();

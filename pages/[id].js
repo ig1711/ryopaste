@@ -164,7 +164,7 @@ const Paste = () => {
       <div className="fixed bottom-0 left-0 h-12 w-full border-[1px] border-transparent border-t-[#999] bg-stone-800 shadow-xl shadow-black p-2 grid grid-cols-5 place-content-center place-items-stretch z-10">
         <button
           ref={historyBtn}
-          className="h-10 text-[#999] hover:text-white focus:text-white hover:shadow-[0_1px_0_white] focus:shadow-[0_1px_0_white] outline-none transition-all py-2"
+          className="h-10 text-[#999] hover:text-white hover:shadow-[0_1px_0_white] outline-none transition-all py-2"
           onClick={() => {
             const h = window?.localStorage?.getItem("history");
             if (!h)
@@ -174,10 +174,10 @@ const Paste = () => {
             setView((v) => (v === "history" ? "code" : "history"));
           }}
         >
-          History
+          {view === 'history' ? 'Go Back' : 'History'}
         </button>
         <Link href="/">
-          <a className="h-10 text-center text-[#999] hover:text-white focus:text-white hover:shadow-[0_1px_0_white] focus:shadow-[0_1px_0_white] outline-none transition-all py-2">
+          <a className="h-10 text-center text-[#999] hover:text-white hover:shadow-[0_1px_0_white] outline-none transition-all py-2">
             New Paste
           </a>
         </Link>
@@ -186,7 +186,7 @@ const Paste = () => {
         </span>
         <button
           ref={copyCBtn}
-          className="h-10 text-[#999] hover:text-white focus:text-white hover:shadow-[0_1px_0_white] focus:shadow-[0_1px_0_white] outline-none transition-all py-2"
+          className="h-10 text-[#999] hover:text-white hover:shadow-[0_1px_0_white] outline-none transition-all py-2"
           onClick={async () => {
             try {
               await navigator?.clipboard.writeText(codeData.code);
@@ -202,7 +202,7 @@ const Paste = () => {
         </button>
         <button
           ref={copyLBtn}
-          className="h-10 text-[#999] hover:text-white focus:text-white hover:shadow-[0_1px_0_white] focus:shadow-[0_1px_0_white] outline-none transition-all py-2"
+          className="h-10 text-[#999] hover:text-white hover:shadow-[0_1px_0_white] outline-none transition-all py-2"
           onClick={async () => {
             const url = window?.location?.href;
             try {
