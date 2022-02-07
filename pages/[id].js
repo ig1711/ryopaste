@@ -138,8 +138,8 @@ const Paste = () => {
   return (
     <>
       <Head>
-        <title>Ryo Paste | {codeData.title}</title>
-        <meta property="og:title" content={`Ryo Paste | ${codeData.title}`} />
+        <title>Ryo Paste</title>
+        <meta property="og:title" content={`Ryo Paste`} />
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
