@@ -69,7 +69,6 @@ const Index = () => {
   const historyBtn = useRef(null);
   const titleRef = useRef(null);
 
-
   useEffect(() => {
     const keyHandler = (e) => {
       if (e.ctrlKey && e.key === "k") {
@@ -120,7 +119,10 @@ const Index = () => {
           property="og:image"
           content="https://cdn.discordapp.com/attachments/760031614389452841/940176209545920592/ryopastelogo.png"
         />
-        <meta property="og:description" content="RyoPaste is a pastebin. A pastebin or text storage site is a type of online content-hosting service where users can store plain text and share them using a link. Use this link to create your paste." />
+        <meta
+          property="og:description"
+          content="RyoPaste is a pastebin. A pastebin or text storage site is a type of online content-hosting service where users can store plain text and share them using a link. Use this link to create your paste."
+        />
         <meta property="og:site_name" content="Ryo Paste" />
         <meta
           name="theme-color"
@@ -134,7 +136,8 @@ const Index = () => {
           className="h-10 text-[#999] hover:text-white focus:text-white hover:shadow-[0_1px_0_white] focus:shadow-[0_1px_0_white] outline-none transition-all py-2"
           onClick={() => {
             const h = window?.localStorage?.getItem("history");
-            if (!h) return setView((v) => (v === "history" ? "code" : "history"));
+            if (!h)
+              return setView((v) => (v === "history" ? "code" : "history"));
             const ha = JSON.parse(h);
             setHistory(ha);
             setView((v) => (v === "history" ? "code" : "history"));

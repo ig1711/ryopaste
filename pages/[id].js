@@ -144,15 +144,16 @@ const Paste = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content={`${process.env.NEXT_PUBLIC_URL}${
-            router.asPath
-          }`}
+          content={`${process.env.NEXT_PUBLIC_URL}${router.asPath}`}
         />
         <meta
           property="og:image"
           content="https://cdn.discordapp.com/attachments/760031614389452841/940176209545920592/ryopastelogo.png"
         />
-        <meta property="og:description" content="RyoPaste is a pastebin. A pastebin or text storage site is a type of online content-hosting service where users can store plain text and share them using a link. Use this link to view what is shared." />
+        <meta
+          property="og:description"
+          content="RyoPaste is a pastebin. A pastebin or text storage site is a type of online content-hosting service where users can store plain text and share them using a link. Use this link to view what is shared."
+        />
         <meta property="og:site_name" content="RyoPaste" />
         <meta
           name="theme-color"
@@ -166,7 +167,8 @@ const Paste = () => {
           className="h-10 text-[#999] hover:text-white focus:text-white hover:shadow-[0_1px_0_white] focus:shadow-[0_1px_0_white] outline-none transition-all py-2"
           onClick={() => {
             const h = window?.localStorage?.getItem("history");
-            if (!h) return setView((v) => (v === "history" ? "code" : "history"));
+            if (!h)
+              return setView((v) => (v === "history" ? "code" : "history"));
             const ha = JSON.parse(h);
             setHistory(ha);
             setView((v) => (v === "history" ? "code" : "history"));
@@ -205,10 +207,7 @@ const Paste = () => {
             const url = window?.location?.href;
             try {
               await navigator.clipboard.writeText(
-                url ||
-                  `${process.env.NEXT_PUBLIC_URL}${
-                    router.asPath
-                  }`
+                url || `${process.env.NEXT_PUBLIC_URL}${router.asPath}`
               );
               alert("Copied link to clipboard");
             } catch (e) {
@@ -244,8 +243,7 @@ const Paste = () => {
                           <span className="flex-[1]">{i + 1}</span>
                           <span className="flex-[4]">{h.title}</span>
                           <span className="flex-[8] underline">
-                            {process.env.NEXT_PUBLIC_URL}/
-                            {h.id}
+                            {process.env.NEXT_PUBLIC_URL}/{h.id}
                           </span>
                         </a>
                       </Link>
