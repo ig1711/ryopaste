@@ -119,7 +119,7 @@ const Index = () => {
           property="og:image"
           content="https://cdn.discordapp.com/attachments/760031614389452841/940176209545920592/ryopastelogo.png"
         />
-        <meta property="og:description" content="A pastebin or text storage site is a type of online content-hosting service where users can store plain text and share them using a link" />
+        <meta property="og:description" content="A pastebin or text storage site is a type of online content-hosting service where users can store plain text and share them using a link." />
         <meta property="og:site_name" content="Ryo Paste" />
         <meta
           name="theme-color"
