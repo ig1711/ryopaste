@@ -143,7 +143,7 @@ const Paste = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content={`${process.env.NEXT_PUBLIC_URL || process.env.URL}${
+          content={`${process.env.NEXT_PUBLIC_URL}${
             router.asPath
           }`}
         />
@@ -205,7 +205,7 @@ const Paste = () => {
             try {
               await navigator.clipboard.writeText(
                 url ||
-                  `${process.env.NEXT_PUBLIC_URL || process.env.URL}${
+                  `${process.env.NEXT_PUBLIC_URL}${
                     router.asPath
                   }`
               );
@@ -243,7 +243,7 @@ const Paste = () => {
                           <span className="flex-[1]">{i + 1}</span>
                           <span className="flex-[4]">{h.title}</span>
                           <span className="flex-[8] underline">
-                            {process.env.NEXT_PUBLIC_URL || process.env.URL}/
+                            {process.env.NEXT_PUBLIC_URL}/
                             {h.id}
                           </span>
                         </a>

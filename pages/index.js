@@ -25,7 +25,7 @@ const { Snowflake } = require("@sapphire/snowflake");
 const epoch = new Date(process.env.NEXT_PUBLIC_EPOCH);
 const snowflake = new Snowflake(epoch);
 
-const url = process.env.NEXT_PUBLIC_URL || process.env.URL;
+const url = process.env.NEXT_PUBLIC_URL;
 
 const shortcuts = `== Shortcuts ==
 Ctrl + / :: Toggle shortcut list
