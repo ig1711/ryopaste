@@ -138,8 +138,9 @@ const Paste = () => {
   return (
     <>
       <Head>
-        <title>Ryo Paste</title>
-        <meta property="og:title" content={`Ryo Paste`} />
+        <title>RyoPaste</title>
+        <meta description="RyoPaste is a pastebin. A pastebin or text storage site is a type of online content-hosting service where users can store plain text and share them using a link. Use this link to view what is shared." />
+        <meta property="og:title" content={`RyoPaste`} />
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
@@ -151,8 +152,8 @@ const Paste = () => {
           property="og:image"
           content="https://cdn.discordapp.com/attachments/760031614389452841/940176209545920592/ryopastelogo.png"
         />
-        <meta property="og:description" content="A pastebin or text storage site is a type of online content-hosting service where users can store plain text and share them using a link. Open this link to view what is shared." />
-        <meta property="og:site_name" content="Ryo Paste" />
+        <meta property="og:description" content="RyoPaste is a pastebin. A pastebin or text storage site is a type of online content-hosting service where users can store plain text and share them using a link. Use this link to view what is shared." />
+        <meta property="og:site_name" content="RyoPaste" />
         <meta
           name="theme-color"
           media="(prefers-color-scheme: dark)"
