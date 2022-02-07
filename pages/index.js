@@ -133,7 +133,7 @@ const Index = () => {
           className="h-10 text-[#999] hover:text-white focus:text-white hover:shadow-[0_1px_0_white] focus:shadow-[0_1px_0_white] outline-none transition-all py-2"
           onClick={() => {
             const h = window?.localStorage?.getItem("history");
-            if (!h) return setView("history");
+            if (!h) return setView((v) => (v === "history" ? "code" : "history"));
             const ha = JSON.parse(h);
             setHistory(ha);
             setView((v) => (v === "history" ? "code" : "history"));
