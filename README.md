@@ -1,1 +1,2 @@
-# Paste bin made using Next.js
+# Ryo Paste
+Pastebin made using Next.js
