@@ -110,9 +110,9 @@ const Index = () => {
   return (
     <>
       <Head>
-        <title>Ryo Paste</title>
+        <title>RyoPaste</title>
         <meta description="RyoPaste is a pastebin. A pastebin or text storage site is a type of online content-hosting service where users can store plain text and share them using a link. Use this link to create your paste." />
-        <meta property="og:title" content="Ryo Paste" />
+        <meta property="og:title" content="RyoPaste" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={url} />
         <meta
