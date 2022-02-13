@@ -148,7 +148,7 @@ const Paste = () => {
         />
         <meta
           property="og:image"
-          content="https://cdn.discordapp.com/attachments/760031614389452841/940176209545920592/ryopastelogo.png"
+          content={`https://ryo-ss.herokuapp.com?link=${process.env.NEXT_PUBLIC_URL}/${id}&size=small`}
         />
         <meta
           property="og:description"
