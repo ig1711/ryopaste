@@ -149,7 +149,7 @@ const Index = () => {
             setView((v) => (v === "history" ? "code" : "history"));
           }}
         >
-          {view === 'history' ? 'Go Back' : 'History'}
+          {view === "history" ? "Go Back" : "History"}
         </button>
         <Listbox value={selected} onChange={setSelected}>
           <div className="relative">

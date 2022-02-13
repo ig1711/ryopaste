@@ -26,14 +26,9 @@ Ctrl + h :: Show history`;
 
 const Paste = ({ id, asPath, codeData }) => {
   const router = useRouter();
-  // const { id } = router.query;
 
   const [shortcut, setShortcut] = useState(true);
-  // const [codeData, setCodeData] = useState({
-  //   code: "",
-  //   title: "Title",
-  //   lang: "md",
-  // });
+
   const [view, setView] = useState("code");
   const [history, setHistory] = useState([]);
   const views = {
@@ -41,57 +36,6 @@ const Paste = ({ id, asPath, codeData }) => {
     shortcut: shortcuts,
     history: "history",
   };
-
-  // useEffect(() => {
-  //   if (!router.isReady) return;
-
-  //   (async () => {
-  //     setView("loading");
-  //     const { data, error } = await supabase
-  //       .from("Pastes")
-  //       .select("id, code, lang, name")
-  //       .eq("id", id);
-
-  //     if (error) {
-  //       setView("code");
-  //       setCodeData({
-  //         code: "Error occured, please try again",
-  //         title: "Error",
-  //         lang: "md",
-  //       });
-  //       return console.log(error);
-  //     }
-
-  //     if (!data.length) {
-  //       setView("code");
-  //       return setCodeData({
-  //         code: "Paste not found, make sure you have the right link",
-  //         title: "Not found",
-  //         lang: "md",
-  //       });
-  //     }
-
-  //     setView("code");
-  //     setCodeData({
-  //       code: data[0].code,
-  //       title: data[0].name,
-  //       lang: data[0].lang,
-  //     });
-
-  //     const h = window?.localStorage?.getItem("history");
-  //     if (!h) {
-  //       const newH = [{ id, title: data[0].name }];
-  //       const newHa = JSON.stringify(newH);
-  //       window?.localStorage?.setItem("history", newHa);
-  //       return;
-  //     }
-  //     const ha = JSON.parse(h);
-  //     const newH = ha.filter((f) => f.id !== id);
-  //     const newHa = [{ id, title: data[0].name }, ...newH];
-  //     const newHb = JSON.stringify(newHa);
-  //     window?.localStorage?.setItem("history", newHb);
-  //   })();
-  // }, [id, router.isReady]);
 
   useEffect(() => {
     if (!codeData.success) return;
@@ -161,12 +105,12 @@ const Paste = ({ id, asPath, codeData }) => {
           property="og:url"
           content={`${process.env.NEXT_PUBLIC_URL}${asPath}`}
         />
-         <meta
+        <meta
           property="og:image"
           content={`https://ryo-ss.herokuapp.com?link=${process.env.NEXT_PUBLIC_URL}${asPath}&size=small`}
         />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
           name="twitter:image"
           content={`https://ryo-ss.herokuapp.com?link=${process.env.NEXT_PUBLIC_URL}${asPath}&size=small`}
         />
@@ -194,7 +138,7 @@ const Paste = ({ id, asPath, codeData }) => {
             setView((v) => (v === "history" ? "code" : "history"));
           }}
         >
-          {view === 'history' ? 'Go Back' : 'History'}
+          {view === "history" ? "Go Back" : "History"}
         </button>
         <Link href="/">
           <a className="h-10 text-center text-[#999] hover:text-white hover:shadow-[0_1px_0_white] outline-none transition-all py-2">
@@ -282,34 +226,46 @@ Paste.getInitialProps = async (ctx) => {
   const { id } = ctx.query;
   const { asPath } = ctx;
   const { data, error } = await supabase
-  .from("Pastes")
-  .select("id, code, lang, name")
-  .eq("id", id);
+    .from("Pastes")
+    .select("id, code, lang, name")
+    .eq("id", id);
 
   if (error) {
-    return { id, asPath, codeData: {
-      success: false,
-      code: "Error occured, please try again",
-      title: "Error",
-      lang: "md",
-    }};
+    return {
+      id,
+      asPath,
+      codeData: {
+        success: false,
+        code: "Error occured, please try again",
+        title: "Error",
+        lang: "md",
+      },
+    };
   }
 
   if (!data.length) {
-    return { id, asPath, codeData: {
-      success: false,
-      code: "Paste not found, make sure you have the right link",
-      title: "Not found",
-      lang: "md",
-    }};
+    return {
+      id,
+      asPath,
+      codeData: {
+        success: false,
+        code: "Paste not found, make sure you have the right link",
+        title: "Not found",
+        lang: "md",
+      },
+    };
   }
 
-  return { id, asPath, codeData: {
-    success: true,
-    code: data[0].code,
-    title: data[0].name,
-    lang: data[0].lang,
-  }};
+  return {
+    id,
+    asPath,
+    codeData: {
+      success: true,
+      code: data[0].code,
+      title: data[0].name,
+      lang: data[0].lang,
+    },
+  };
 };
 
 export default Paste;
