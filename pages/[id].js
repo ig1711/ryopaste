@@ -146,8 +146,13 @@ const Paste = () => {
           property="og:url"
           content={`${process.env.NEXT_PUBLIC_URL}${router.asPath}`}
         />
-        <meta
+         <meta
           property="og:image"
+          content={`https://ryo-ss.herokuapp.com?link=${process.env.NEXT_PUBLIC_URL}/${id}&size=small`}
+        />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta
+          name="twitter:image"
           content={`https://ryo-ss.herokuapp.com?link=${process.env.NEXT_PUBLIC_URL}/${id}&size=small`}
         />
         <meta
